@@ -1,0 +1,21 @@
+<ion-content class="list-avatar-page">
+  <ion-list *ngIf="(chats$ | async)?.length > 0">
+
+    <!--<ion-list-header>Today</ion-list-header>-->
+    <span *ngFor="let chat of chats$ | async">
+      <div *ngIf="chat.receiver && authUser">
+        <ion-item *ngIf="chat.receiver.key !== authUser.key" 
+        [class.unread-bg]="chat.read == 'false'" (click)="gotToPrivateChat(chat.receiver, chat)">
+          <ion-avatar *ngIf="chat.receiver" item-start>
+            <img [src]="chat.receiver.avatar">
+          </ion-avatar>
+          <h2 *ngIf="chat.receiver">{{chat.receiver.name}}</h2>
+          <p *ngIf="chat.lastMessage">{{chat.lastMessage.text || ''}}</p>
+          <ion-note *ngIf="chat.lastMessage" item-end>{{chat.lastMessage.timestamp}}</ion-note>
+        </ion-item>
+      </div>
+    </span>
+    
+  </ion-list>
+
+</ion-content>

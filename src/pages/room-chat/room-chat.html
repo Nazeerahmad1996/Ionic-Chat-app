@@ -1,0 +1,65 @@
+<ion-content id="messagesContent">
+  <ion-header class="keep-navbar">
+
+    <ion-navbar>
+      <ion-title>{{subRoom.name}}</ion-title>
+      <p class="subtitle">room chat</p>
+      <ion-buttons end>
+        <button ion-button icon-only large (click)="openModal({subRoom: subRoom})">
+          <ion-icon name="people"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-grid class="mt-50">
+    <ion-row  *ngFor="let message of messages | async">
+
+      <ion-col *ngIf="authUser.email == message.user.email" (press)="actionList(message)" col-9 class="message my_message">
+
+        <span *ngIf="message.replyTo">
+          <span  class="user_name">Reply To: {{message.replyTo.user.name}}:</span>
+          <br>
+          <span class="text-msg"> {{message.replyTo.message.text}}</span>
+          <div class="time">{{message.replyTo.message.timeAsString}}</div>
+          <hr>
+        </span>
+
+        <span class="user_name">{{message.user.name}}:</span><br>
+        <span class="text-msg">{{message.message.text}}</span>
+        <div class="time">{{message.message.timeAsString}}</div>
+      </ion-col>
+
+      <ion-col *ngIf="authUser.email != message.user.email" (press)="actionList(message)" offset-3 col-9 class="message other_message">
+        <span *ngIf="message.replyTo">
+          <span  class="user_name">Reply To: {{message.replyTo.user.name}}:</span>
+          <br>
+          <span class="text-msg"> {{message.replyTo.message.text}}</span>
+          <div class="time">{{message.replyTo.message.timeAsString}}</div>
+          <hr>
+        </span>
+
+        <span class="user_name">{{message.user.name}}:</span><br>
+        <span class="text-msg">{{message.message.text}}</span>
+        <div class="time">{{message.message.timeAsString}}</div>
+      </ion-col>
+      <!--[ngClass]="['message', (authUser.email == message.user.email) ? 'my_message' : 'other_message']"-->
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="b-54">
+  <ion-toolbar>
+    <ion-row class="message_row">
+      <ion-col col-9>
+        <ion-item no-lines>
+          <ion-input type="text" (ionFocus)="focusInput()" (ionBlur)="blurInput()" placeholder="Type message here..." [(ngModel)]="newMessage.text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear color="primary" (mousedown)="$event.preventDefault()" (click)="sendMessage()" [disabled]="! newMessage.text">
+          Send
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

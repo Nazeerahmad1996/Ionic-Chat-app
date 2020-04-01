@@ -1,0 +1,45 @@
+<ion-content padding>
+  <ion-header>
+
+    <ion-navbar>
+      <ion-title>Room</ion-title>
+      <p class="subtitle">Laura, Sam, David</p>
+    </ion-navbar>
+
+  </ion-header>
+
+  <ion-grid class="mt-50">
+    <ion-row>
+
+      <ion-col col-9 class="message my_message">
+        <span class="user_name">Laura:</span><br>
+        <span>What's Up?</span>
+        <div class="time">16.09 12:31</div>
+      </ion-col>
+
+      <ion-col offset-3 col-9 class="message other_message">
+        <span class="user_name">Sam:</span><br>
+        <span>Hey!</span>
+        <div class="time">16.09 12:35</div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="b-54">
+  <ion-toolbar>
+    <ion-row class="message_row">
+      <ion-col col-9>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="Message" [(ngModel)]="message"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button clear color="primary" (click)="sendMessage()" [disabled]="message === ''">
+          Send
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,7 @@
+{
+  "name": "wivesroundtable",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

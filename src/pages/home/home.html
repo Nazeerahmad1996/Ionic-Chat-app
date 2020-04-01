@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-tabs tabsPlacement="top" color="primary">
+    <ion-tab [root]="roomsTab" tabTitle="Rooms" tabIcon="chatboxes"></ion-tab>
+    <ion-tab [root]="inboxTab" [tabBadge]="chatCount" tabTitle="Inbox" tabIcon="text"></ion-tab>
+    <ion-tab [root]="notificationTab" (ionSelect)="viewNotifications()" [tabBadge]="notificationCount" tabTitle="Notification" tabIcon="notifications"></ion-tab>
+    <ion-tab [root]="profileTab" tabTitle="Profile" tabIcon="person"></ion-tab>
+    <ion-tab *ngIf="authUser && authUser.type === 'admin'" [root]="adminTab" tabTitle="Admin" tabIcon="more"></ion-tab>
+  </ion-tabs>
+</ion-content>
+

@@ -1,0 +1,100 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>profile</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<!-- <ion-content padding>
+  <div class="profile-img">
+    <img width="200" height="200" class="profile-photo" src="http://i.stack.imgur.com/Dj7eP.jpg">
+  </div>
+</ion-content> -->
+
+<ion-content class="cards-bg social-cards" padding>
+
+    <ion-card class="profile-card">
+    
+      <!--<ion-item>-->
+        <!-- <ion-avatar item-start>
+          <img src="../assets/imgs/avatar.png">
+        </ion-avatar> -->
+        <!--<div item-start>
+            <h2>{{authUser.name}}</h2>
+            <p>{{authUser.email}}</p>
+        </div>-->
+      <!--</ion-item>-->
+    
+      <ion-avatar>
+          <img [src]="authUser.avatar">
+      </ion-avatar>
+
+    <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input value="{{authUser.name}}" disabled="true" type="name"></ion-input>
+    </ion-item>
+    <hr>
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input value="{{authUser.email}}" disabled="true" type="email"></ion-input>
+    </ion-item>
+    <hr>
+      <ion-card-content>
+        <p>{{authUser.status}}</p>
+      </ion-card-content>
+    
+      <ion-row>
+        <ion-col>
+          <!-- <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='thumbs-up'></ion-icon>
+            12 Likes
+          </button> -->
+        </ion-col>
+        <ion-col>
+          <button ion-button color="primary" (click)="openStatusModal()" clear small icon-start>
+            <ion-icon name='create'></ion-icon>
+            Update Status
+          </button>
+        </ion-col>
+        <ion-col align-self-center text-center>
+          <!-- <ion-note>
+            11h ago
+          </ion-note> -->
+        </ion-col>
+      </ion-row>
+      <ion-row class="width-50" text-center>
+          <ion-col>
+              <button ion-button block color="primary" (click)="logout()" small>
+                  <ion-icon name='log-out'></ion-icon>
+                  Logout
+              </button>
+          </ion-col>
+      </ion-row>
+
+    <ion-row class="logout-row" text-center>
+        <ion-col>
+            <button ion-button clear color="primary" small>
+                <ion-icon name="document" class="mr-10"></ion-icon>
+                <a href="https://wivesroundtable.com.ng/privacy-policy/">Privacy Policy</a>
+            </button>
+        </ion-col>
+    </ion-row>
+    </ion-card>
+    
+    
+    </ion-content>
+    
+    <style>
+    .social-cards ion-col {
+      padding: 0;
+    }
+    </style>
+    

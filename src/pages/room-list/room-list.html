@@ -1,0 +1,35 @@
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let room of rooms; let i=index" text-wrap (click)="toggleGroup(i, room.key)" [ngClass]="{active: isGroupShown(i)}">
+      <h1>
+        <strong>{{room.name}}</strong>
+        <ion-icon color="success" float-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h1>
+      <div *ngIf="isGroupShown(i) && subRooms.length > 0">
+        <span *ngFor="let subRoom of subRooms">
+          <ion-item (click)="gotToChat(room, subRoom)" *ngIf="subRoom.block == false || ! subRoom.block">
+              <h2><strong>{{subRoom.name}}</strong></h2>
+              <ion-note item-end>
+                <button ion-button color="primary" large clear style="text-transform: none;">
+                  <span>(chat) 
+                    <ion-icon  name="chatboxes"></ion-icon>
+                  </span>
+                </button>
+              </ion-note>
+          </ion-item>
+          <ion-item *ngIf="subRoom.block == true">
+              <h2><strong>{{subRoom.name}}</strong></h2>
+              <ion-note item-end>
+                <button ion-button color="danger" clear large>
+                  <span>(Blocked) </span>
+                  <ion-icon name="warning"></ion-icon>
+                </button>
+              </ion-note>
+          </ion-item>
+        </span>
+      </div>
+      <hr>
+    </ion-item>
+  </ion-list>
+</ion-content>

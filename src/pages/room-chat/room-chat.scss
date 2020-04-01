@@ -1,0 +1,52 @@
+page-room-chat {
+    .user_name {
+      color: #ffffff;
+    }
+    .message {
+      padding: 10px !important;
+      transition: all 250ms ease-in-out !important;
+      border-radius: 10px !important;
+      margin-bottom: 4px !important;
+    }
+    .my_message {
+      background: color($colors, primary) !important;
+      color: #000 !important;
+    }
+    .other_message {
+      background: #aaa !important;
+      color: #000 !important;
+    }
+    .time {
+      color: #ffffff;
+      float: right;
+      font-size: small;
+    }
+    .message_row {
+      background-color: #fff;
+    }
+    .mt-50{
+      margin-top: 8px;
+      margin-bottom: 60px;
+    }
+    .toolbar-content-md {
+      .subtitle {
+        font-size: 80%;
+        margin: 0;
+      }
+    }
+    .toolbar-title-md{
+      padding: 0 !important;
+    }
+    .bar-button-md{
+      font-size: 2rem !important;
+    }
+    .user-type {
+      color: gray;
+      font-size: 10px;
+      padding: 12px;
+    }
+  .keep-navbar{
+    position: sticky;
+    height: 50px;
+  }
+}

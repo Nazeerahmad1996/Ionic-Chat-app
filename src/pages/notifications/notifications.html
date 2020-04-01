@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list class="mb-60" *ngIf="(notifications$ | async)?.length > 0">
+
+    <span *ngFor="let notification of notifications$ | async">
+        <ion-item *ngIf="notification"  [class.unread-bg]="notification.read == 'false'">
+            <ion-thumbnail item-start>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPTw82E-wKpyeDjZYJAF8lh4Qy0jNuPhfr6teBuZvB2TrSSUQLog">
+            </ion-thumbnail>
+            <h2 *ngIf="notification">{{notification.title}}</h2>
+            <p *ngIf="notification">{{notification.message}}</p>
+            <button ion-button clear item-end (click)="openModal(notification)">View</button>
+        </ion-item>
+    </span>
+
+  </ion-list>
+</ion-content>
